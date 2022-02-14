@@ -20,5 +20,6 @@ export const Breadcrumbs = styled.div`
 `;
 
 export const Crumb = styled(Link)`
-    
+    margin-bottom: 20px;
+    display: inline-block;
 `;

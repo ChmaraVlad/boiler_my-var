@@ -1,0 +1,98 @@
+/* eslint-disable max-len */
+// Core
+import React, { FC, useEffect } from 'react';
+
+// Bus
+// import {} from '../../../bus/'
+
+// Styles
+import * as S from './styles';
+
+// Types
+type PropTypes = {
+    /* type props here */
+}
+
+export const Task2: FC<PropTypes> = () => {
+    useEffect(()=>{
+        console.log('Task 2');
+
+
+        function CleanerRobot(initialEnergy = 0 /* Изначальный заряд батареи */) {
+            this.getEnergy = getEnergy;
+            this.setEnergy = setEnergy;
+
+            const MAX_ENERGY_CAPACITY = 100; /* Максимальная ёмкость батареи. */
+            let energy = null;
+
+            this.setEnergy(initialEnergy);
+
+            function getEnergy() {
+                // Решение
+                return energy;
+            }
+            function setEnergy(a) {
+                // Решение
+                if (typeof a !== 'number') {
+                    throw new Error('type string');
+                } else if (a < 0) {
+                    throw new Error('New energy level can not be less than 0. ');
+                } else if (a > 100) {
+                    throw new Error('New energy level can not be more than 100. ');
+                }
+
+                return energy = a;
+            }
+        }
+
+        const cleanerRobot = new CleanerRobot(22);
+
+        /* Текущий заряд батареи: 22 */
+        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+
+        cleanerRobot.setEnergy(55);
+
+        /* Текущий заряд батареи: 55 */
+        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+
+        try {
+            new CleanerRobot(-1);
+        } catch (error) {
+            /* Error: New energy level can not be less than 0. */
+            console.log(`${error.name}: ${error.message}`);
+        }
+
+        try {
+            cleanerRobot.setEnergy(-22);
+        } catch (error) {
+            /* Error: New energy level can not be less than 0. */
+            console.log(`${error.name}: ${error.message}`);
+        }
+
+        try {
+            cleanerRobot.setEnergy(101);
+        } catch (error) {
+            /* Error: New energy level can not be more than 100. */
+            console.log(`${error.name}: ${error.message}`);
+        }
+    }, []);
+
+    return (
+        <S.TaskWrapper>
+            <h1>Задача 2.</h1>
+            <div>
+                * Добавьте роботу геттер и сеттер для приватного свойства energy.
+                * Нужно, чтобы внешний код мог узнать заряд батареи робота.
+                *
+                * Условия:
+                * - заданную форму конструктора включая его параметры менять нельзя — можно только дополнять.
+                *
+                * Генерировать ошибки если:
+                * - новый заряд батареи устанавливается в значении меньшем, чем 0;
+                * - новый заряд батареи устанавливается в значении большем, чем значение MAX_ENERGY_CAPACITY;
+                * - при создании экземпляра CleanerRobot изначальный уровень энергии зада в не рамок допустимого диапазона.
+                */
+            </div>
+        </S.TaskWrapper>
+    );
+};
