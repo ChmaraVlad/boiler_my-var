@@ -16,36 +16,38 @@ export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
 
-        // const array = [ 'Доброе утро!', 'Добрый вечер!', 3, 512, '#', 'До свидания!' ];
+        const array = [ 'Доброе утро!', 'Добрый вечер!', 3, 512, '#', 'До свидания!' ];
 
-        // // Решение
-        // function filter(array, cb) {
-        //     if (!Array.isArray(array)) {
-        //         throw new Error('parametr must be an array');
-        //     } else if (arguments.length !== 2) {
-        //         throw new Error('must be two parametrs. First an array, second a callback func');
-        //     } else if (typeof cb !== 'function') {
-        //         throw new Error('parametr must be a Function');
-        //     }
-        //     let newArr = [];
-        //     for (let i = 0; i < array.length; i++) {
-        //         if (cb(array[ i ], i, array) === true) {
-        //             newArr.push(array[ i ]);
-        //         }
-        //     }
+        interface Callback<TData> {
+            (item: TData, index: number, arrayRef: TData[]): boolean
+        }
+        function filter<T>(array: T[], cb: Callback<T>): T[] {
+            if (!Array.isArray(array)) {
+                throw new Error('parametr must be an array');
+            } else if (arguments.length !== 2) {
+                throw new Error('must be two parametrs. First an array, second a callback func');
+            } else if (typeof cb !== 'function') {
+                throw new Error('parametr must be a Function');
+            }
+            let newArr = [];
+            for (let i = 0; i < array.length; i++) {
+                if (cb(array[ i ], i, array) === true) {
+                    newArr.push(array[ i ]);
+                }
+            }
 
-        //     return  newArr;
-        // }
+            return  newArr;
+        }
 
-        // const filteredArray = filter(array, function(item, i, arrayRef) {
-        //     // console.log(item); // элемент массива
-        //     // console.log(i); // индекс элемента
-        //     // console.log(arrayRef); // ссылка на обрабатываемый массив
+        const filteredArray = filter<string|number>(array, function(item, i, arrayRef) {
+            console.log(item); // элемент массива
+            console.log(i); // индекс элемента
+            console.log(arrayRef); // ссылка на обрабатываемый массив
 
-        //     return typeof item === 'number';
-        // });
+            return typeof item === 'number';
+        });
 
-        // console.log(filteredArray); // ['Добрый вечер!']
+        console.log(filteredArray); // ['Добрый вечер!']
     }, []);
 
     return (

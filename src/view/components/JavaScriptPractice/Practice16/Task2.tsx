@@ -12,35 +12,32 @@ type PropTypes = {
     /* type props here */
 }
 
+class Worker {
+    #firstName: string;
+    #lastName: string;
+    #rate: number;
+    #days: number;
+    constructor(firstName: string, lastName: string, rate: number, days: number) {
+        this.#firstName = firstName;
+        this.#lastName = lastName;
+        this.#rate = rate;
+        this.#days = days;
+    }
+
+    getSalary = () => this.#rate * this.#days
+    getName = () => this.#firstName + ' ' + this.#lastName
+    getDays = () => this.#days
+    getRate = () => this.#rate
+}
+
 export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
-
-        // class Worker {
-        //     #firstName = null
-        //     #lastName = null
-        //     #rate = null
-        //     #days = null
-        //     constructor(firstName, lastName, rate, days) {
-        //         this.#firstName = firstName;
-        //         this.#lastName = lastName;
-        //         this.#rate = rate;
-        //         this.#days = days;
-        //     }
-
-        //     getSalary = () => this.#rate * this.#days
-        //     getName = () => this.#firstName + ' ' + this.#lastName
-        //     getDays = () => this.#days
-        //     getRate = () => this.#rate
-        // }
-
-
-        // const worker = new Worker('Walter', 'White', 10, 31);
-
-        // console.log(worker.getName()); // Walter White
-        // console.log(worker.getRate()); // 10
-        // console.log(worker.getDays()); // 31
-        // console.log(worker.getSalary()); // 10 * 31 = 310
+        const worker = new Worker('Walter', 'White', 10, 31);
+        console.log(worker.getName()); // Walter White
+        console.log(worker.getRate()); // 10
+        console.log(worker.getDays()); // 31
+        console.log(worker.getSalary()); // 10 * 31 = 310
     }, []);
 
     return (

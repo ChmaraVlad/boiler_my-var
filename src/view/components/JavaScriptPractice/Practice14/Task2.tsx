@@ -17,64 +17,68 @@ export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
 
+        // interface IntCleanRobot {
+        //     this: void;
+        //     initialEnergy: Number;
+        // }
 
-        function CleanerRobot(initialEnergy = 0 /* Изначальный заряд батареи */) {
-            this.getEnergy = getEnergy;
-            this.setEnergy = setEnergy;
+        // function CleanerRobot: IntCleanRobot (initialEnergy = 0 /* Изначальный заряд батареи */) {
+        //     this.getEnergy = getEnergy;
+        //     this.setEnergy = setEnergy;
 
-            const MAX_ENERGY_CAPACITY = 100; /* Максимальная ёмкость батареи. */
-            let energy = null;
+        //     const MAX_ENERGY_CAPACITY = 100; /* Максимальная ёмкость батареи. */
+        //     let energy = null;
 
-            this.setEnergy(initialEnergy);
+        //     this.setEnergy(initialEnergy);
 
-            function getEnergy() {
-                // Решение
-                return energy;
-            }
-            function setEnergy(a) {
-                // Решение
-                if (typeof a !== 'number') {
-                    throw new Error('type string');
-                } else if (a < 0) {
-                    throw new Error('New energy level can not be less than 0. ');
-                } else if (a > 100) {
-                    throw new Error('New energy level can not be more than 100. ');
-                }
+        //     function getEnergy() {
+        //         // Решение
+        //         return energy;
+        //     }
+        //     function setEnergy(a) {
+        //         // Решение
+        //         if (typeof a !== 'number') {
+        //             throw new Error('type string');
+        //         } else if (a < 0) {
+        //             throw new Error('New energy level can not be less than 0. ');
+        //         } else if (a > 100) {
+        //             throw new Error('New energy level can not be more than 100. ');
+        //         }
 
-                return energy = a;
-            }
-        }
+        //         return energy = a;
+        //     }
+        // }
 
-        const cleanerRobot = new CleanerRobot(22);
+        // const cleanerRobot = new CleanerRobot(22);
 
-        /* Текущий заряд батареи: 22 */
-        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+        // /* Текущий заряд батареи: 22 */
+        // console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
 
-        cleanerRobot.setEnergy(55);
+        // cleanerRobot.setEnergy(55);
 
-        /* Текущий заряд батареи: 55 */
-        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+        // /* Текущий заряд батареи: 55 */
+        // console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
 
-        try {
-            new CleanerRobot(-1);
-        } catch (error) {
-            /* Error: New energy level can not be less than 0. */
-            console.log(`${error.name}: ${error.message}`);
-        }
+        // try {
+        //     new CleanerRobot(-1);
+        // } catch (error) {
+        //     /* Error: New energy level can not be less than 0. */
+        //     console.log(`${error.name}: ${error.message}`);
+        // }
 
-        try {
-            cleanerRobot.setEnergy(-22);
-        } catch (error) {
-            /* Error: New energy level can not be less than 0. */
-            console.log(`${error.name}: ${error.message}`);
-        }
+        // try {
+        //     cleanerRobot.setEnergy(-22);
+        // } catch (error) {
+        //     /* Error: New energy level can not be less than 0. */
+        //     console.log(`${error.name}: ${error.message}`);
+        // }
 
-        try {
-            cleanerRobot.setEnergy(101);
-        } catch (error) {
-            /* Error: New energy level can not be more than 100. */
-            console.log(`${error.name}: ${error.message}`);
-        }
+        // try {
+        //     cleanerRobot.setEnergy(101);
+        // } catch (error) {
+        //     /* Error: New energy level can not be more than 100. */
+        //     console.log(`${error.name}: ${error.message}`);
+        // }
     }, []);
 
     return (

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Core
 import React, { FC, useEffect } from 'react';
 
@@ -16,8 +17,11 @@ export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
-        // const compose = (...callbacks) => (initialArgument) => {
-        //     return callbacks.reduceRight((accumulator, next, index) => {
+        // type TypeInitArg = string;
+        // // type TypeReduce = ((accum: string, next: Function, index: number) => Function), initArg = '';
+
+        // const compose = (...callbacks: Function[]) => (initialArgument: TypeInitArg) => {
+        //     return callbacks.reduceRight((accumulator: string, next: Function, index: number) => {
         //         if (typeof next !== 'function') {
         //             throw new Error('callback is not a function type.');
         //         } else if (
@@ -34,16 +38,16 @@ export const Task4: FC<PropTypes> = () => {
         // };
 
         // const result1 = compose(
-        //     (prevResult) => prevResult + 'o',
-        //     (prevResult) => prevResult + 'l',
-        //     (prevResult) => prevResult + 'l',
-        //     (prevResult) => prevResult + 'e',
+        //     (prevResult: TypeInitArg) => prevResult + 'o',
+        //     (prevResult: TypeInitArg) => prevResult + 'l',
+        //     (prevResult: TypeInitArg) => prevResult + 'l',
+        //     (prevResult: TypeInitArg) => prevResult + 'e',
         // )('h');
         // const result2 = compose(
-        //     (prevResult) => prevResult + 'o',
-        //     (prevResult) => prevResult + 'l',
-        //     (prevResult) => prevResult + 'l',
-        //     (prevResult) => prevResult + 'e',
+        //     (prevResult: TypeInitArg) => prevResult + 'o',
+        //     (prevResult: TypeInitArg) => prevResult + 'l',
+        //     (prevResult: TypeInitArg) => prevResult + 'l',
+        //     (prevResult: TypeInitArg) => prevResult + 'e',
         //     () => 'h',
         // )();
 

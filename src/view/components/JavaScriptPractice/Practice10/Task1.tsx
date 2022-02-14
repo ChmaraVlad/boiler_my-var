@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Core
 import React, { FC, useEffect } from 'react';
 
@@ -16,28 +17,30 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // function bind(func, obj, ...rest) {
-        //     if (typeof func !== 'function') {
-        //         throw new TypeError('First parametr must be a function');
-        //     }
-        //     if (typeof obj !== 'object' && Array.isArray(obj)) {
-        //         throw new TypeError('Second parametr must be an object');
-        //     }
+        type Person = {
+            name: string;
+        }
+        function bind<T>(func: Function, obj: Object, ...rest: T[]) {
+            if (typeof func !== 'function') {
+                throw new TypeError('First parametr must be a function');
+            }
+            if (typeof obj !== 'object' && Array.isArray(obj)) {
+                throw new TypeError('Second parametr must be an object');
+            }
 
-        //     return () => func.apply(obj, rest);
-        // }
+            return () => func.apply(obj, rest);
+        }
+        function getName<U>(this: Person, greeting: U, message: U) {
+            return `${greeting} ${message} ${this.name}.`;
+        }
 
-        // function getName(greeting, message) {
-        //     return `${greeting} ${message} ${this.name}.`;
-        // }
+        const user = { name: 'Walter', getName };
+        const oliver = { name: 'Oliver' };
 
-        // const user = { name: 'Walter', getName };
-        // const oliver = { name: 'Oliver' };
+        const boundedGetName = bind<string>(getName, oliver, 'Hello!', 'I am');
 
-        // const boundedGetName = bind(getName, oliver, 'Hello!', 'I am');
-
-        // console.log(user.getName('Hello!', 'My name is')); // Hello! My name is Walter.
-        // console.log(boundedGetName()); // Hello! I am Oliver.
+        console.log(user.getName('Hello!', 'My name is')); // Hello! My name is Walter.
+        console.log(boundedGetName()); // Hello! I am Oliver.
     }, []);
 
     return (

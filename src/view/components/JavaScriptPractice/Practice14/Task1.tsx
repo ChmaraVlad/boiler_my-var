@@ -17,10 +17,9 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-
-        // function CleanerRobot(
+        // function CleanerRobot (
         //     initialEnergy = 0 /* Изначальный заряд батареи робота */,
-        //     cleaningSquare /* Площадь для уборки в метрах. */,
+        //     cleaningSquare: number /* Площадь для уборки в метрах. */,
         // ) {
         //     let energy = initialEnergy;
 

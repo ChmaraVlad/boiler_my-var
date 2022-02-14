@@ -168,7 +168,7 @@ export const Public: FC = () => {
                                 element = { <Lesson3 /> }
                                 path = '3'
                             />
-                            <Route
+                            {/* <Route
                                 element = { <Lesson4 /> }
                                 path = '4'
                             />
@@ -187,7 +187,7 @@ export const Public: FC = () => {
                             <Route
                                 element = { <Lesson8 /> }
                                 path = '8'
-                            />
+                            /> */}
                         </Route>
                     </Route>
                 </Route>

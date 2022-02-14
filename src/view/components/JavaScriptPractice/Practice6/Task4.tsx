@@ -16,38 +16,40 @@ export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
-        // const array = [ 1, 2, 'Добро пожаловать.', 4, 5, 6 ];
+        const array = [ 1, 2, 'Добро пожаловать.', 4, 5, 6 ];
 
-        // // Решение
-        // function some(array, cb) {
-        //     if (!Array.isArray(array)) {
-        //         throw new Error('parametr must be an array');
-        //     } else if (arguments.length !== 2) {
-        //         throw new Error('must be two parametrs. First an array, second a callback func');
-        //     } else if (typeof cb !== 'function') {
-        //         throw new Error('parametr must be a Function');
-        //     }
-        //     if (!array.length) {
-        //         return false;
-        //     }
-        //     for (let i = 0; i < array.length; i++) {
-        //         if (cb(array[ i ], i, array) === true) {
-        //             return true;
-        //         }
-        //     }
+        interface Callback<TData> {
+            (item: TData, index: number, arrayRef: TData[]): boolean
+        }
+        function some<T>(array: T[], cb: Callback<T>): boolean {
+            if (!Array.isArray(array)) {
+                throw new Error('parametr must be an array');
+            } else if (arguments.length !== 2) {
+                throw new Error('must be two parametrs. First an array, second a callback func');
+            } else if (typeof cb !== 'function') {
+                throw new Error('parametr must be a Function');
+            }
+            if (!array.length) {
+                return false;
+            }
+            for (let i = 0; i < array.length; i++) {
+                if (cb(array[ i ], i, array) === true) {
+                    return true;
+                }
+            }
 
-        //     return  false;
-        // }
+            return  false;
+        }
 
-        // const result = some(array, function(item, i, arrayRef) {
-        //     console.log(item); // элемент массива
-        //     console.log(i); // индекс элемента
-        //     console.log(arrayRef); // ссылка на обрабатываемый массив
+        const result = some(array, function(item, i, arrayRef) {
+            console.log(item); // элемент массива
+            console.log(i); // индекс элемента
+            console.log(arrayRef); // ссылка на обрабатываемый массив
 
-        //     return typeof item === 'string';
-        // });
+            return typeof item === 'string';
+        });
 
-        // console.log(result); // true
+        console.log(result); // true
     }, []);
 
     return (

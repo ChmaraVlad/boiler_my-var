@@ -12,58 +12,45 @@ type PropTypes = {
     /* type props here */
 }
 
+let array = [
+    false,
+    'Привет.',
+    2,
+    'Здравствуй.',
+    [],
+    'Прощай.',
+    {
+        name:    'Уолтер',
+        surname: 'Уайт',
+    },
+    'Приветствую.',
+];
+
+type Inspect = (array: Array<string | number | boolean | Array<string> | {
+    name: string;
+    surname: string;
+}>) => number[]
+
 export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // let array = [
-        //     false,
-        //     'Привет.',
-        //     2,
-        //     'Здравствуй.',
-        //     [],
-        //     'Прощай.',
-        //     {
-        //         name:    'Уолтер',
-        //         surname: 'Уайт',
-        //     },
-        //     'Приветствую.',
-        // ];
-        let array = [
-            'Привет.',
-            'Здравствуй.',
-            'Прощай.',
-            'Приветствую.',
-        ];
+        const inspect: Inspect = (array) => {
+            const filtered = array
+                .filter((item) => typeof item === 'string')
+                .map((string) => {
+                    if (typeof string === 'string' && string.length) {
+                        return string.length;
+                    }
 
+                    return 0;
+                });
 
-        // Решение
+            return filtered;
+        };
+        const result = inspect(array);
 
-        // interface IntFunc {
-        //     (array: []) : number[]
-        // }
-
-        // function inspect(): IntFunc {
-        //     if (arguments.length > 1) {
-        //         throw new Error('must be only 1 parametr');
-        //     }
-        //     if (!Array.isArray(array)) {
-        //         throw new Error('parametr must be an array');
-        //     }
-
-        //     let filtered = array.filter((item) => {
-        //         return typeof item === 'string';
-        //     });
-
-        //     let newArr = filtered.map((item) => {
-        //         return item.length;
-        //     });
-
-        //     return newArr;
-        // }
-
-        // const result = inspect(array);
-        // console.log(result); // [ 7, 11, 7, 12 ]
+        console.log(result); // [ 7, 11, 7, 12 ]
     }, []);
 
     return (

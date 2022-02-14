@@ -16,13 +16,7 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        const postpone = (start, end, delay) => {
-            if (typeof start !== 'number'
-                && typeof end !== 'number'
-                && typeof delay !== 'number'
-            ) {
-                throw new Error('all params neet to be typeof number');
-            }
+        const postpone = (start: number, end: number, delay: number) => {
             let count = start;
 
             if (start > end) {
@@ -48,8 +42,7 @@ export const Task1: FC<PropTypes> = () => {
             }
         };
 
-
-        postpone(1, 3, 3000);
+        // postpone(1, 3, 3000);
         // 1
         // 2
         // 3

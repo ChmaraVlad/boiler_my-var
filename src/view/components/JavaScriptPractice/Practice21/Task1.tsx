@@ -17,33 +17,36 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
+        interface InterfaceObj  {
+            name: string;
+            verified?: boolean;
+        }
+        const isCustomerVerified = (obj: InterfaceObj)  => {
+            return new Promise((resolve, reject) => {
+                if (obj.verified) {
+                    resolve(true);
+                } else {
+                    reject('Customer is not verified');
+                }
+            });
+        };
 
-        // const isCustomerVerified = (obj)  => {
-        //     return new Promise((resolve, reject) => {
-        //         if (obj.verified) {
-        //             resolve(true);
-        //         } else {
-        //             reject('Customer is not verified');
-        //         }
-        //     });
-        // };
+        const personFirst = {
+            name:     'Oliver',
+            verified: true,
+        };
 
-        // const personFirst = {
-        //     name:     'Oliver',
-        //     verified: true,
-        // };
+        const personSecond = {
+            name: 'Alex',
+        };
 
-        // const personSecond = {
-        //     name: 'Alex',
-        // };
+        isCustomerVerified(personFirst)
+            .then((status) => console.log(status)) // true
+            .catch((error) => console.log(error));
 
-        // isCustomerVerified(personFirst)
-        //     .then((status) => console.log(status)) // true
-        //     .catch((error) => console.log(error));
-
-        // isCustomerVerified(personSecond)
-        //     .then((status) => console.log(status))
-        //     .catch((error) => console.log(error)); // Customer is not verified
+        isCustomerVerified(personSecond)
+            .then((status) => console.log(status))
+            .catch((error) => console.log(error)); // Customer is not verified
     }, []);
 
     return (

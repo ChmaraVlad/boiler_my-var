@@ -12,29 +12,32 @@ type PropTypes = {
     /* type props here */
 }
 
+class Worker {
+    firstName: string;
+    lastName: string;
+    rate: number;
+    days: number;
+    constructor(firstName: string, lastName: string, rate: number, days: number) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.rate = rate;
+        this.days = days;
+    }
+
+    getSalary = () => this.rate * this.days
+}
+
 export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // class Worker {
-        //     constructor(firstName: string, lastName:string, rate:number, days: number) {
-        //         this.firstName = firstName;
-        //         this.lastName = lastName;
-        //         this.rate = rate;
-        //         this.days = days;
-        //     }
+        const worker = new Worker('Walter', 'White', 10, 31);
 
-        //     // getSalary = () => this.rate * this.days
-        // }
-
-
-        // const worker = new Worker('Walter', 'White', 10, 31);
-
-        // console.log(worker.firstName); // Walter
-        // console.log(worker.lastName); // White
-        // console.log(worker.rate); // 10
-        // console.log(worker.days); // 31
-        // console.log(worker.getSalary()); // 10 * 31 = 310
+        console.log(worker.firstName); // Walter
+        console.log(worker.lastName); // White
+        console.log(worker.rate); // 10
+        console.log(worker.days); // 31
+        console.log(worker.getSalary()); // 10 * 31 = 310
     }, []);
 
     return (

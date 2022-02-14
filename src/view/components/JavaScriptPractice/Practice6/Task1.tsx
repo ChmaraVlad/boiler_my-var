@@ -16,39 +16,33 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // const array = [ 1, 2, 3 ];
+        const array = [ 1, 2, 3 ];
 
-        // type TypeFunc = (item: number, index: number, arrayRef: []) => void;
+        interface Callback<TData> {
+            (item: TData, index: number, arrayRef: TData[]): void
+        }
 
-        // interface Callback<T1> {
-        //     (param1: T1[], param2: number, param3: this): void
-        // }
-        // interface ForEach<T> {
-        //     array: <T>[];
-        //     cb: Function;
-        // }
+        function forEach<T>(array: T[], cb: Callback<T>): void {
+            if (!Array.isArray(array)) {
+                throw new Error('parametr must be an array');
+            } else if (arguments.length !== 2) {
+                throw new Error('must be two parametrs. First an array, second a callback func');
+            } else if (typeof cb !== 'function') {
+                throw new Error('parametr must be a Function');
+            }
+            for (let i = 0; i < array.length; i++) {
+                if (array[ i ] === undefined) {}
+                cb(array[ i ], i, array);
+            }
+        }
 
-        // function forEach<number>(array, cb: Callback<number>) {
-        //     if (!Array.isArray(array)) {
-        //         throw new Error('parametr must be an array');
-        //     } else if (arguments.length !== 2) {
-        //         throw new Error('must be two parametrs. First an array, second a callback func');
-        //     } else if (typeof cb !== 'function') {
-        //         throw new Error('parametr must be a Function');
-        //     }
-        //     for (let i = 0; i < array.length; i++) {
-        //         if (array[ i ] === undefined) {}
-        //         cb(array[ i ], i, array);
-        //     }
-        // }
+        const result = forEach<number>(array, function(item, index, arrayRef) {
+            console.log(item); // элемент массива
+            console.log(index); // индекс элемента
+            console.log(arrayRef); // ссылка на обрабатываемый массив
+        });
 
-        // const result = forEach(array, function(item, index, arrayRef) {
-        //     console.log(item); // элемент массива
-        //     console.log(index); // индекс элемента
-        //     console.log(arrayRef); // ссылка на обрабатываемый массив
-        // });
-
-        // console.log(result); // undefined
+        console.log(result); // undefined
     }, []);
 
     return (

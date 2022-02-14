@@ -12,120 +12,124 @@ import * as S from './styles';
 type PropTypes = {
     /* type props here */
 }
+type TypePerson = {
+    name:   string,
+    age:     number,
+    country: string,
+    salary:  number,
+};
+type TypeUpdateMethod = [id: number, obj: TypePerson]
+
+class DB {
+    #data: Map<K, V>;
+    #id: number;
+    constructor() {
+        this.#data = new Map();
+        this.#id = 0;
+    }
+
+    create = (obj: TypePerson) => {
+        if (typeof obj !== 'object' || Array.isArray(obj)) {
+            throw new Error('param need to be Object');
+        }
+        if (!(obj.name && obj.age && obj.country && obj.salary)) {
+            throw new Error('Obj must have all keys: name, age, country, salary');
+        }
+        if (typeof obj.name !== 'string' && typeof obj.country !== 'string') {
+            throw new Error('must be a string');
+        }
+        if (typeof obj.age !== 'number' && typeof obj.salary !== 'number') {
+            throw new Error('must be a number');
+        }
+
+        this.#data.set(this.#id, { ...obj, id: this.#id });
+
+        return this.#id++;
+    }
+
+    read = (id: number) => {
+        if (typeof id !== 'number' || isNaN(id)) {
+            throw new Error('invalid id');
+        }
+
+        return this.#data.get(id) ? this.#data.get(id) : null;
+    }
+
+    readAll = () => {
+        return [ ...this.#data.values() ];
+    }
+
+    update = (...args: TypeUpdateMethod) => {
+        const [ id, obj ] = args;
+        if (args.length !== 2) {
+            throw new Error('need to be two params');
+        }
+        if (typeof id !== 'number' || isNaN(id) || !this.#data.get(id)) {
+            throw new Error('invalid id');
+        }
+        if (!(obj.name || obj.age || obj.country || obj.salary)) {
+            throw new Error('Obj must have some of these keys: name, age, country, salary');
+        }
+        let target = {
+            ...this.#data.get(id),
+            ...obj,
+        };
+        this.delete(id);
+        this.create(target);
+
+        return id;
+    }
+
+    delete = (id: number) => {
+        if (typeof id !== 'number' || isNaN(id) || !this.#data.get(id)) {
+            throw new Error('invalid id');
+        }
+
+        return this.#data.delete(id);
+    }
+}
+
 
 export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // class DB {
-        //     #data = null
-        //     #id = null
-        //     constructor() {
-        //         this.#data = new Map();
-        //         this.#id = 0;
-        //     }
+        const db = new DB();
 
-        //     create = (obj) => {
-        //         if (typeof obj !== 'object' || Array.isArray(obj)) {
-        //             throw new Error('param need to be Object');
-        //         }
-        //         if (!(obj.name && obj.age && obj.country && obj.salary)) {
-        //             throw new Error('Obj must have all keys: name, age, country, salary');
-        //         }
-        //         if (typeof obj.name !== 'string' && typeof obj.country !== 'string') {
-        //             throw new Error('must be a string');
-        //         }
-        //         if (typeof obj.age !== 'number' && typeof obj.salary !== 'number') {
-        //             throw new Error('must be a number');
-        //         }
+        const person = {
+            name:    'Pitter', // обязательное поле с типом string
+            age:     21, // обязательное поле с типом number
+            country: 'ua', // обязательное поле с типом string
+            salary:  500, // обязательное поле с типом number
+        };
+        const person1 = {
+            name:    'Pitter-1', // обязательное поле с типом string
+            age:     21, // обязательное поле с типом number
+            country: 'ua', // обязательное поле с типом string
+            salary:  500, // обязательное поле с типом number
+        };
+        // const person2 = []
 
-        //         this.#data.set(this.#id, { ...obj, id: this.#id });
+        const id = db.create(person);
+        const id1 = db.create(person1);
+        // console.log(id1);
 
-        //         return this.#id++;
-        //     }
+        // let customer = db.read(0);
+        // let customer = db.read();
+        // console.log(customer);
 
-        //     read = (id) => {
-        //         if (typeof id !== 'number' || isNaN(id)) {
-        //             throw new Error('invalid id');
-        //         }
+        let customers = db.readAll(); // массив пользователей
+        console.log(customers);
 
-        //         return this.#data.get(id) ? this.#data.get(id) : null;
-        //     }
+        // let up = db.update(0, { age: 22 }); // id
+        // console.log(up);
 
-        //     readAll = (...args) => {
-        //         if (args.length) {
-        //             throw new Error('readAl dont need a parametrs');
-        //         }
+        let del = db.delete(id); // true
+        let del1 = db.delete(id1); // true
+        console.log(del, del1);
 
-        //         return [ ...this.#data.values() ];
-        //     }
-
-        //     update = (...args) => {
-        //         const [ id, obj ] = args;
-        //         if (args.length !== 2) {
-        //             throw new Error('need to be two params');
-        //         }
-        //         if (typeof id !== 'number' || isNaN(id) || !this.#data.get(id)) {
-        //             throw new Error('invalid id');
-        //         }
-        //         if (!(obj.name || obj.age || obj.country || obj.salary)) {
-        //             throw new Error('Obj must have some of these keys: name, age, country, salary');
-        //         }
-        //         let target = {
-        //             ...this.#data.get(id),
-        //             ...obj,
-        //         };
-        //         this.delete(id);
-        //         this.create(target);
-
-        //         return id;
-        //     }
-
-        //     delete = (id) => {
-        //         if (typeof id !== 'number' || isNaN(id) || !this.#data.get(id)) {
-        //             throw new Error('invalid id');
-        //         }
-
-        //         return this.#data.delete(id);
-        //     }
-        // }
-
-        // const db = new DB();
-
-        // const person = {
-        //     name:    'Pitter', // обязательное поле с типом string
-        //     age:     21, // обязательное поле с типом number
-        //     country: 'ua', // обязательное поле с типом string
-        //     salary:  500, // обязательное поле с типом number
-        // };
-        // const person1 = {
-        //     name:    'Pitter-1', // обязательное поле с типом string
-        //     age:     21, // обязательное поле с типом number
-        //     country: 'ua', // обязательное поле с типом string
-        //     salary:  500, // обязательное поле с типом number
-        // };
-        // // const person2 = []
-
-        // const id = db.create(person);
-        // const id1 = db.create(person1);
-        // // console.log(id1);
-
-        // // let customer = db.read(0);
-        // // let customer = db.read();
-        // // console.log(customer);
-
-        // let customers = db.readAll(); // массив пользователей
-        // console.log(customers);
-
-        // // let up = db.update(0, { age: 22 }); // id
-        // // console.log(up);
-
-        // let del = db.delete(id); // true
-        // let del1 = db.delete(id1); // true
-        // console.log(del, del1);
-
-        // customers = db.readAll(); // массив пользователей
-        // console.log(customers);
+        customers = db.readAll(); // массив пользователей
+        console.log(customers);
     }, []);
 
     return (

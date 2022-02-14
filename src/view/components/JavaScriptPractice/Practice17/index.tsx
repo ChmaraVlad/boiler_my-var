@@ -1,6 +1,6 @@
 // Core
 import React, { FC } from 'react';
-import { Task1 } from '../Practice16/Task1';
+import { Task1 } from '../Practice17/Task1';
 
 // Bus
 // import {} from '../../../bus/'

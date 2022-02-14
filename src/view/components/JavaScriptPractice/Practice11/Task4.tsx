@@ -22,7 +22,7 @@ export const Task4: FC<PropTypes> = () => {
 
             return {
                 print: () => vizov,
-                call:  (func: Function, ...args: []) => {
+                call:  (func: Function, ...args: number[]) => {
                     if (typeof func !== 'function' && !func) {
                         throw new Error('call func => parametr need to be a function');
                     }
@@ -39,20 +39,21 @@ export const Task4: FC<PropTypes> = () => {
         }
 
 
-        // const returnIdentity = (n: number) => n;
-        // const sum = (a: number, b: number) => a + b;
-        // const returnNothing = () => {};
+        const returnIdentity = (n: number) => n;
+        const sum = (a: number, b: number) => a + b;
+        // eslint-disable-next-line no-empty-function
+        const returnNothing = () => {};
 
-        // const logger1 = createLogger();
-        // console.log(logger1.call(returnIdentity, 1)); // 1
-        // console.log(logger1.call(sum, 1, 2)); // 3
-        // console.log(logger1.print()); // [ { name: 'returnIdentity', in: [ 1 ], out: 1 }, { name: 'sum', in: [ 1, 2 ], out: 3 } ]
+        const logger1 = createLogger();
+        console.log(logger1.call(returnIdentity, 1)); // 1
+        console.log(logger1.call(sum, 1, 2)); // 3
+        console.log(logger1.print()); // [ { name: 'returnIdentity', in: [ 1 ], out: 1 }, { name: 'sum', in: [ 1, 2 ], out: 3 } ]
 
-        // const logger2 = createLogger();
-        // console.log(logger2.call(sum, 3, 4)); // 7
-        // console.log(logger2.call(returnIdentity, 9)); // 9
-        // console.log(logger2.call(returnNothing)); // undefined
-        // console.log(logger2.print()); // [ { name: 'sum', in: [ 3, 4 ], out: 7 }, { name: 'returnIdentity', in: [ 9 ], out: 9 }, { name: 'returnNothing', in: [], out: undefined } ]
+        const logger2 = createLogger();
+        console.log(logger2.call(sum, 3, 4)); // 7
+        console.log(logger2.call(returnIdentity, 9)); // 9
+        console.log(logger2.call(returnNothing)); // undefined
+        console.log(logger2.print()); // [ { name: 'sum', in: [ 3, 4 ], out: 7 }, { name: 'returnIdentity', in: [ 9 ], out: 9 }, { name: 'returnNothing', in: [], out: undefined } ]
     }, []);
 
     return (

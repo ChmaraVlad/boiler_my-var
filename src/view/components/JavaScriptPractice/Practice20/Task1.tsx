@@ -17,9 +17,8 @@ export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-
         // class Customers {
-        //     #arrayCustomers = null
+        //     #arrayCustomers: Object[];
         //     constructor() {
         //         this.#arrayCustomers = [];
         //     }
@@ -54,7 +53,6 @@ export const Task1: FC<PropTypes> = () => {
         //     }
         // }
 
-
         // // ```javascript
         // const customers = new Customers();
         // customers.add({ name: 'Alex' });
@@ -72,8 +70,6 @@ export const Task1: FC<PropTypes> = () => {
         // for (const customer of customers) {
         //     console.log(customer);
         // }
-
-
         // // В консоли будет
         // // { name: 'Andrii', verified: true }
         // // { name: 'Marco', verified: true }
@@ -118,7 +114,7 @@ export const Task1: FC<PropTypes> = () => {
         //     console.log(item);
         // }
 
-        // const iterator = iterable[Symbol.iterator]();
+        // const iterator = iterable[ Symbol.iterator ]();
 
         // console.log(iterator.next());
         // console.log(iterator.next());

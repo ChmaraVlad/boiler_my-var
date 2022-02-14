@@ -13,38 +13,31 @@ type PropTypes = {
     /* type props here */
 }
 
+class Stringer  {
+    reverse(str: string) {
+        return str.split('').reverse()
+            .join('');
+    }
+
+    uppercaseFirst(str: string) {
+        return str[ 0 ].toUpperCase() + str.substring(1);
+    }
+
+    uppercaseAll(str: string) {
+        return str.split(' ').map((item) => item[ 0 ].toUpperCase() + item.substring(1))
+            .join(' ');
+    }
+}
+
 export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
+        const stringer = new Stringer();
 
-        // class Stringer extends Array {
-        //     constructor() {
-        //         super();
-        //     }
-
-        //     reverse(str) {
-        //         return str.split('').reverse()
-        //             .join('');
-        //     }
-
-        //     uppercaseFirst(str) {
-        //         return str[ 0 ].toUpperCase() + str.substring(1);
-        //     }
-
-        //     uppercaseAll(str) {
-        //         return str.split(' ').map((item) => item[ 0 ].toUpperCase() + item.substring(1))
-        //             .join(' ');
-        //     }
-        // }
-
-
-        // const stringer = new Stringer();
-
-
-        // console.log(stringer.reverse('good morning!')); // !gninrom doog
-        // console.log(stringer.uppercaseFirst('good morning!')); // Good morning!
-        // console.log(stringer.uppercaseAll('good morning!')); // Good Morning!
+        // console.log(stringer.reverse('good morning!'));
+        console.log(stringer.uppercaseFirst('good morning!')); // Good morning!
+        console.log(stringer.uppercaseAll('good morning!')); // Good Morning!
     }, []);
 
     return (

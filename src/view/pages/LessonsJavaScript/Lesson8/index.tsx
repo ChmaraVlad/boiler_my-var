@@ -6,7 +6,6 @@ import React, { FC } from 'react';
 
 // Components
 import { ErrorBoundary } from '../../../components';
-import { Practice8 } from '../../../components/JavaScriptPractice/Practice8';
 
 // Styles
 import * as S from './styles';
@@ -22,7 +21,9 @@ const Lesson8: FC<PropTypes> = () => {
             <h1>
                 Error Handling and debugging
             </h1>
-            <Practice8/>
+            <h2>
+                Without practice Tasks
+            </h2>
         </S.Container>
     );
 };

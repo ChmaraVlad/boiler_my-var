@@ -16,7 +16,6 @@ export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 3');
 
-
         function createArray(a: string|number, b: number) {
             return Array(b).fill(a);
         }

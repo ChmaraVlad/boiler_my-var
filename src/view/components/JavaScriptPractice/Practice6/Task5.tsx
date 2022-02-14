@@ -16,48 +16,50 @@ export const Task5: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 5');
 
-        // const array = [ 1, 2, 3, 4, 5 ];
-        // const INITIAL_ACCUMULATOR = 6;
+        const array = [ 1, 2, 3, 4, 5 ];
+        const INITIAL_ACCUMULATOR = 6;
 
-        // // Решение
-        // function reduce(array, cb, number) {
-        //     if (arguments.length !== 3) {
-        //         throw new Error('must be three parametrs.');
-        //     } else if (!Array.isArray(array)) {
-        //         throw new Error(' first parametr must be an array');
-        //     } else if (typeof cb !== 'function') {
-        //         throw new Error('second parametr must be a Function');
-        //     } else if (typeof number !== 'number') {
-        //         throw new Error('third parametr must be a Number');
-        //     }
-        //     if (!array.length && number) {
-        //         return number;
-        //     } else if (!array.length) {
-        //         throw new Error('Reduce of empty array with no initial value');
-        //     }
-        //     let result = number ? number : 0;
-        //     for (let i = 0; i < array.length; i++) {
-        //         cb(result, array[ i ], i, array);
-        //         result += array[ i ];
-        //     }
+        interface Callback {
+            (accumulator: number, item: number, i: number, arrayRef: number[]): number
+        }
+        function reduce(array: number[], cb: Callback, number: number): number {
+            if (arguments.length !== 3) {
+                throw new Error('must be three parametrs.');
+            } else if (!Array.isArray(array)) {
+                throw new Error(' first parametr must be an array');
+            } else if (typeof cb !== 'function') {
+                throw new Error('second parametr must be a Function');
+            } else if (typeof number !== 'number') {
+                throw new Error('third parametr must be a Number');
+            }
+            if (!array.length && number) {
+                return number;
+            } else if (!array.length) {
+                throw new Error('Reduce of empty array with no initial value');
+            }
+            let result = number ? number : 0;
+            for (let i = 0; i < array.length; i++) {
+                cb(result, array[ i ], i, array);
+                result += array[ i ];
+            }
 
-        //     return result;
-        // }
+            return result;
+        }
 
-        // const result = reduce(
-        //     array,
-        //     function(accumulator, item, i, arrayRef) {
-        //         console.log(accumulator); // значение-аккумулятор
-        //         console.log(item); // элемент массива
-        //         console.log(i); // индекс элемента
-        //         console.log(arrayRef); // ссылка на обрабатываемый массив
+        const result = reduce(
+            array,
+            function(accumulator, item, i, arrayRef) {
+                console.log(accumulator); // значение-аккумулятор
+                console.log(item); // элемент массива
+                console.log(i); // индекс элемента
+                console.log(arrayRef); // ссылка на обрабатываемый массив
 
-        //         return accumulator + item;
-        //     },
-        //     INITIAL_ACCUMULATOR,
-        // );
+                return accumulator + item;
+            },
+            INITIAL_ACCUMULATOR,
+        );
 
-        // console.log(result); // 21
+        console.log(result); // 21
     }, []);
 
     return (

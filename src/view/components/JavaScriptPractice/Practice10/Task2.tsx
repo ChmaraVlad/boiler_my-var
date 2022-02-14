@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Core
 import React, { FC, useEffect } from 'react';
 
@@ -16,41 +17,41 @@ export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
 
-        // function calculate(...cbs) {
-        //     const results = [];
-        //     cbs.forEach((func, index) => {
-        //         if (typeof func !== 'function') {
-        //             throw new Error('Invalid params, must be a cb');
-        //         }
+        function calculate(...cbs: Function[]) {
+            const results: number[] = [];
+            cbs.forEach((func, index) => {
+                if (typeof func !== 'function') {
+                    throw new Error('Invalid params, must be a cb');
+                }
 
-        //         const arg = results[ index - 1 ];
-        //         const result = index === 0 ? func() : func(arg);
+                const arg = results[ index - 1 ];
+                const result = index === 0 ? func() : func(arg);
 
-        //         if (typeof result === 'undefined') {
-        //             throw new Error(
-        //                 `callback at index ${index} did not return any value.`,
-        //             );
-        //         }
+                if (typeof result === 'undefined') {
+                    throw new Error(
+                        `callback at index ${index} did not return any value.`,
+                    );
+                }
 
-        //         results.push(result);
-        //     });
+                results.push(result);
+            });
 
-        //     return results[ results.length - 1 ];
-        // }
+            return results[ results.length - 1 ];
+        }
 
-        // const result = calculate(
-        //     () => {
-        //         return 7;
-        //     },
-        //     (prevResult) => {
-        //         return prevResult + 4;
-        //     },
-        //     (prevResult) => {
-        //         return prevResult * 5;
-        //     },
-        // );
+        const result = calculate(
+            () => {
+                return 7;
+            },
+            (prevResult: number) => {
+                return prevResult + 4;
+            },
+            (prevResult: number) => {
+                return prevResult * 5;
+            },
+        );
 
-        // console.log(result); // 55
+        console.log(result); // 55
     }, []);
 
     return (

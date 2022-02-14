@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function */
 // Core
 import React, { FC, useEffect } from 'react';
 
@@ -16,9 +17,9 @@ export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 3');
 
-        // function calculateAdvanced(...cbs) {
-        //     const results = [];
-        //     const errors = [];
+        // function calculateAdvanced(...cbs: Function[]) {
+        //     const results: number[] = [];
+        //     const errors: Object[] = [];
         //     cbs.forEach((func, index) => {
         //         if (typeof func !== 'function') {
         //             throw new Error('Invalid params, must be a cb');
@@ -33,11 +34,11 @@ export const Task3: FC<PropTypes> = () => {
         //                 );
         //             }
         //             results.push(result);
-        //         } catch (e) {
+        //         } catch (error: Error & { name: string, message: string }) {
         //             errors.push({
         //                 index:   index,
-        //                 name:    e.name,
-        //                 message: e.message,
+        //                 name:    error.name,
+        //                 message: error.message,
         //             });
         //         }
         //     });
@@ -53,19 +54,19 @@ export const Task3: FC<PropTypes> = () => {
         //         return 7;
         //     },
         //     () => {},
-        //     (prevResult) => {
+        //     (prevResult: number) => {
         //         return prevResult + 4;
         //     },
         //     () => {
         //         throw new RangeError('Range is too big.');
         //     },
-        //     (prevResult) => {
+        //     (prevResult: number) => {
         //         return prevResult + 1;
         //     },
         //     () => {
         //         throw new ReferenceError('ID is not defined.');
         //     },
-        //     (prevResult) => {
+        //     (prevResult: number) => {
         //         return prevResult * 5;
         //     },
         // );
@@ -82,9 +83,11 @@ export const Task3: FC<PropTypes> = () => {
                 *
                 * После отлова ошибки перейдите к выполнению следующего коллбека.
                 *
-                * Улучшенная функция calculateAdvanced() должна возвращать объект с двумя свойствами: `value` и `errors`:
+                * Улучшенная функция calculateAdvanced() должна возвращать объект с двумя свойствами:
+                `value` и `errors`:
                 * - свойство `value` содержит результат вычисления всех функций из цепочки;
-                * - свойство `errors` содержит массив с объектами, где каждый объект должен обладать следующими свойствами:
+                * - свойство `errors` содержит массив с объектами, где каждый объект должен обладать
+                следующими свойствами:
                 *     - index — индекс коллбека, на котором ошибка была возбуждена;
                 *     - name — имя ошибки;
                 *     - message — сообщение ошибки.

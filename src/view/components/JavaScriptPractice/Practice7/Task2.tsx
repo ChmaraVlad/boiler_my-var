@@ -16,8 +16,7 @@ export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
 
-
-        // function collect(array: []) {
+        // function collect(array) {
         //     if (arguments.length > 1) {
         //         throw new Error('must be only 1 parametr');
         //     }
@@ -39,12 +38,27 @@ export const Task2: FC<PropTypes> = () => {
         //     return res;
         // }
 
+        // ============= test
+        // const collect = (array: any[]) => {
+        //     const flated = array.flat(Infinity);
+        //     const filtered: number[] = flated.filter((item) => {
+        //         if (typeof item === 'number' || Array.isArray(item)) {
+        //             return item;
+        //         }
+        //         console.log(item);
+        //         throw new Error('some item is not a number or array');
+        //     });
 
-        // let array1 = [[[ 1 ], [ 1, '2' ]], [[ 2, { 1: '1' }], [ 1, 2 ]]];
+        //     return filtered.reduce((previousValue, currentValue) => {
+        //         return previousValue + currentValue;
+        //     }, 0);
+        // };
+
+        // const array1 = [[[ 1 ], [ 1, '2' ]], [[ 2, { 1: '1' }], [ 1, 2 ]]];
         // console.log(collect(array1)); // 12
 
-        // array1 = [[[ 1, 2 ], [ 1, 2 ]], [[ 2, 1 ], [ 1, 2 ]]];
-        // console.log(collect(array1)); // 12
+        // // array1 = [[[ 1, 2 ], [ 1, 2 ]], [[ 2, 1 ], [ 1, 2 ]]];
+        // // console.log(collect(array1)); // 12
 
         // const array2 = [[[[[ 1, 2 ]]]]];
         // console.log(collect(array2)); // 3

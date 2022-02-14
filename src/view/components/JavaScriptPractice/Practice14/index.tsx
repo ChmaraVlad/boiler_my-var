@@ -1,9 +1,9 @@
 // Core
 import React, { FC } from 'react';
-import { Task1 } from '../Practice10/Task1';
-import { Task2 } from '../Practice10/Task2';
-import { Task3 } from '../Practice10/Task3';
-import { Task4 } from '../Practice10/Task4';
+import { Task1 } from '../Practice14/Task1';
+import { Task2 } from '../Practice14/Task2';
+import { Task3 } from '../Practice14/Task3';
+import { Task4 } from '../Practice14/Task4';
 
 // Bus
 // import {} from '../../../bus/'
