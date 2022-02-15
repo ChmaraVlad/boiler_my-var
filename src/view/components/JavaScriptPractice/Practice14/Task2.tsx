@@ -13,9 +13,72 @@ type PropTypes = {
     /* type props here */
 }
 
+class CleanerRobot {
+    MAX_ENERGY_CAPACITY: number = 100; /* Максимальная ёмкость батареи. */
+    energy: number = 0;
+    constructor(initialEnergy = 0 /* Изначальный заряд батареи */) {
+        this.setEnergy(initialEnergy);
+    }
+
+    getEnergy() {
+        return this.energy;
+    }
+
+    setEnergy(a: number) {
+        // Решение
+        if (typeof a !== 'number') {
+            throw new Error('type string');
+        } else if (a < 0) {
+            throw new Error('New energy level can not be less than 0. ');
+        } else if (a > 100) {
+            throw new Error('New energy level can not be more than 100. ');
+        }
+        this.energy = a;
+
+        return this.energy;
+    }
+}
+
+const cleanerRobot = new CleanerRobot(22);
+
 export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
+
+        /* Текущий заряд батареи: 22 */
+        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+
+        cleanerRobot.setEnergy(55);
+
+        /* Текущий заряд батареи: 55 */
+        console.log(`Текущий заряд батареи: ${cleanerRobot.getEnergy()}`);
+
+        try {
+            new CleanerRobot(-1);
+        } catch (error) {
+            if (error instanceof Error) {
+                /* Error: New energy level can not be less than 0. */
+                console.log(`${error.name}: ${error.message}`);
+            }
+        }
+
+        try {
+            cleanerRobot.setEnergy(-22);
+        } catch (error) {
+            /* Error: New energy level can not be less than 0. */
+            if (error instanceof Error) {
+                console.log(`${error.name}: ${error.message}`);
+            }
+        }
+
+        try {
+            cleanerRobot.setEnergy(101);
+        } catch (error) {
+            /* Error: New energy level can not be more than 100. */
+            if (error instanceof Error) {
+                console.log(`${error.name}: ${error.message}`);
+            }
+        }
 
         // interface IntCleanRobot {
         //     this: void;

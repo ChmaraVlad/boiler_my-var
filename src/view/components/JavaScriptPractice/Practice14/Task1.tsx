@@ -13,13 +13,75 @@ type PropTypes = {
     /* type props here */
 }
 
+class CleanerRobot {
+    energy: number;
+
+    interval: ReturnType<typeof setInterval> | void = void 0;
+    timerId: ReturnType<typeof setTimeout> | void = void 0;
+
+    cleaningSquare: number;
+    ENERGY_CONSUMPTION: number;
+    CLEANING_SPEED: number;
+
+    constructor(
+        initialEnergy = 0 /* Изначальный заряд батареи робота */,
+        cleaningSquare: number /* Площадь для уборки в метрах. */,
+    ) {
+        this.energy = initialEnergy;
+        this.cleaningSquare = cleaningSquare;
+
+        this.ENERGY_CONSUMPTION = 1; /* Расход энергии: 1% батареи на 1 час работы. */
+        this.CLEANING_SPEED = 10; /* Скорость уборки: 10 квадратных метров в час. */
+    }
+
+    getEnergyConsumtion = () =>  this.ENERGY_CONSUMPTION; ;
+    getCleaningTime = () => this.cleaningSquare / this.CLEANING_SPEED;
+    onReady = () => {
+        if (typeof this.interval === 'number') {
+            clearTimeout(this.interval);
+            console.log(`Уборка завершена. Осталось заряда батареи: ${this.energy}.`);
+        }
+    }
+
+    setEnergy = (a: number) => {
+        if (typeof a !== 'number') {
+            throw new Error('not a number');
+        }
+
+        return this.energy -= a;
+    }
+
+    clean = () => {
+        const cleaningTime = this.getCleaningTime();
+
+        console.log(
+            `Начинаю процесс уборки. Время уборки: ${cleaningTime} часов.`,
+        );
+
+        /* Для удобства время уборки сокращено до формата 1 час = 1 секунда */
+
+        this.interval  = setInterval(()=>{
+            this.setEnergy(this.getEnergyConsumtion());
+        }, 1000);
+        this.timerId = setTimeout(this.onReady, cleaningTime * 1000);
+    };
+
+    stop = () => {
+        if (typeof this.timerId === 'number' && typeof this.interval === 'number') {
+            clearTimeout(this.timerId);
+            clearTimeout(this.interval);
+        }
+        console.log(`Остановка процесса уборки... Осталось заряда батареи: ${this.energy}.`);
+    }
+}
 export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
+        // ========== js
         // function CleanerRobot (
         //     initialEnergy = 0 /* Изначальный заряд батареи робота */,
-        //     cleaningSquare: number /* Площадь для уборки в метрах. */,
+        //     cleaningSquare /* Площадь для уборки в метрах. */,
         // ) {
         //     let energy = initialEnergy;
 
@@ -36,7 +98,7 @@ export const Task1: FC<PropTypes> = () => {
         //     }
 
 
-        //     const setEnergy = (a: number) => {
+        //     const setEnergy = (a) => {
         //         if(typeof a !== 'number') {
         //             throw new Error('not a number')
         //         }
@@ -63,8 +125,9 @@ export const Task1: FC<PropTypes> = () => {
         //         clearTimeout(interval)
         //         console.log(`Остановка процесса уборки... Осталось заряда батареи: ${energy}.`);
         //     }
-        // const cleanerRobot = new CleanerRobot(50, 45);
-        // cleanerRobot.clean(); /* Начинаю процесс уборки. Время уборки: 4.5 часов. */
+
+        const cleanerRobot = new CleanerRobot(50, 45);
+        cleanerRobot.clean(); /* Начинаю процесс уборки. Время уборки: 4.5 часов. */
     }, []);
 
     return (

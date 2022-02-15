@@ -12,32 +12,32 @@ type PropTypes = {
     /* type props here */
 }
 
+// eslint-disable-next-line
+Function.prototype.delay = function delay(time) {
+    if (this.length) {
+        return (...rest: number[]) => setTimeout(() => {
+            this(...rest);
+        }, time);
+    }
+
+    return setTimeout(() => {
+        this();
+    }, time);
+};
+
 export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 3');
 
-        // Function.prototype.delay = function f(time) {
-        //     if (this.length) {
-        //         return (...rest) => setTimeout(()=>{
-        //             this(...rest);
-        //         }, time);
-        //     }
+        function sayHello() {
+            console.log('Hello!');
+        }
+        sayHello.delay(1000); /* Выведет "Hello!" через 1 секунду */
 
-        //     return setTimeout(()=>{
-        //         this();
-        //     }, time);
-        // };
-
-
-        // function sayHello() {
-        //     console.log('Hello!');
-        // }
-        // sayHello.delay(3000); /* Выведет "Hello!" через 1 секунду */
-
-        // function sum(a, b) {
-        //     console.log(a + b);
-        // }
-        // sum.delay(3000)(5, 2); /* Выведет 7 через 1 секунду. */
+        function sum(a: number, b: number) {
+            console.log(a + b);
+        }
+        sum.delay(1000)(5, 2); /* Выведет 7 через 1 секунду. */
     }, []);
 
     return (

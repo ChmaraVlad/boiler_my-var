@@ -13,28 +13,29 @@ type PropTypes = {
     /* type props here */
 }
 
+class Developer {
+    completedTasks: string[] = [];
+
+    completeTask(task: string) {
+        this.completedTasks.push(task);
+    }
+}
+
 export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
-        // function Developer() {
-        //     this.completedTasks = [];
-        // }
+        const developer1 = new Developer();
+        const developer2 = new Developer();
 
-        // Developer.prototype.completeTask = function(task) {
-        //     this.completedTasks.push(task);
-        // };
+        developer1.completeTask('finish a feature');
+        developer1.completeTask('refactor code');
+        developer1.completeTask('refactor code');
 
-        // const developer1 = new Developer();
-        // const developer2 = new Developer();
+        developer2.completeTask('fix bug');
 
-        // developer1.completeTask('finish a feature');
-        // developer1.completeTask('refactor code');
-        // developer1.completeTask('refactor code');
-        // developer2.completeTask('fix bug');
-
-        // console.log(developer1.completedTasks.length); // 3
-        // console.log(developer2.completedTasks.length); // 3
+        console.log(developer1.completedTasks.length); // 3
+        console.log(developer2.completedTasks.length); // 1
     }, []);
 
     return (
