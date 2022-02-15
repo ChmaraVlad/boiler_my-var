@@ -28,3 +28,8 @@ declare module '*.svg' {
 
     export = File
 }
+
+interface Function {
+    // eslint-disable-next-line
+  delay: (time: number) => ((...rest: number[]) => Timeout) | Timeout;
+}
