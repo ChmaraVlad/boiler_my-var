@@ -17,42 +17,55 @@ export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
-        // type TypeInitArg = string;
-        // // type TypeReduce = ((accum: string, next: Function, index: number) => Function), initArg = '';
+        const compose = (...callbacks: Function[]) => (initialArgument = '') => {
+            return callbacks.reduceRight((accumulator: string, next: Function, index: number) => {
+                if (typeof next !== 'function') {
+                    throw new Error('callback is not a function type.');
+                } else if (
+                    typeof accumulator === 'undefined'
+            && typeof initialArgument !== 'undefined'
+                ) {
+                    throw new Error(
+                        `callback at index ${index - 1} did not return any value.`,
+                    );
+                }
 
-        // const compose = (...callbacks: Function[]) => (initialArgument: TypeInitArg) => {
-        //     return callbacks.reduceRight((accumulator: string, next: Function, index: number) => {
-        //         if (typeof next !== 'function') {
-        //             throw new Error('callback is not a function type.');
-        //         } else if (
-        //             typeof accumulator === 'undefined'
-        //     && typeof initialArgument !== 'undefined'
-        //         ) {
-        //             throw new Error(
-        //                 `callback at index ${index - 1} did not return any value.`,
-        //             );
-        //         }
-
-        //         return next(accumulator);
-        //     }, initialArgument);
-        // };
+                return next(accumulator);
+            }, initialArgument);
+        };
 
         // const result1 = compose(
-        //     (prevResult: TypeInitArg) => prevResult + 'o',
-        //     (prevResult: TypeInitArg) => prevResult + 'l',
-        //     (prevResult: TypeInitArg) => prevResult + 'l',
-        //     (prevResult: TypeInitArg) => prevResult + 'e',
+        //     (prevResult) => prevResult + 'o',
+        //     (prevResult) => prevResult + 'l',
+        //     (prevResult) => prevResult + 'l',
+        //     (prevResult) => prevResult + 'e',
         // )('h');
         // const result2 = compose(
-        //     (prevResult: TypeInitArg) => prevResult + 'o',
-        //     (prevResult: TypeInitArg) => prevResult + 'l',
-        //     (prevResult: TypeInitArg) => prevResult + 'l',
-        //     (prevResult: TypeInitArg) => prevResult + 'e',
+        //     (prevResult) => prevResult + 'o',
+        //     (prevResult) => prevResult + 'l',
+        //     (prevResult) => prevResult + 'l',
+        //     (prevResult) => prevResult + 'e',
         //     () => 'h',
         // )();
 
-        // console.log(result1); // 'hello'
-        // console.log(result2); // 'hello'
+        // ============ как сделать лучше ??? без прописи в каждый вызов типа TypeInitArg ??
+        type TypeInitArg = string;
+        const result1 = compose(
+            (prevResult: TypeInitArg) => prevResult + 'o',
+            (prevResult: TypeInitArg) => prevResult + 'l',
+            (prevResult: TypeInitArg) => prevResult + 'l',
+            (prevResult: TypeInitArg) => prevResult + 'e',
+        )('h');
+        const result2 = compose(
+            (prevResult: TypeInitArg) => prevResult + 'o',
+            (prevResult: TypeInitArg) => prevResult + 'l',
+            (prevResult: TypeInitArg) => prevResult + 'l',
+            (prevResult: TypeInitArg) => prevResult + 'e',
+            () => 'h',
+        )();
+
+        console.log(result1); // 'hello'
+        console.log(result2); // 'hello'
     }, []);
 
     return (

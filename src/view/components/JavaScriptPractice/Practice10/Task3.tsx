@@ -17,61 +17,63 @@ export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 3');
 
-        // function calculateAdvanced(...cbs: Function[]) {
-        //     const results: number[] = [];
-        //     const errors: Object[] = [];
-        //     cbs.forEach((func, index) => {
-        //         if (typeof func !== 'function') {
-        //             throw new Error('Invalid params, must be a cb');
-        //         }
-        //         let arg = results[ results.length - 1 ];
+        function calculateAdvanced(...cbs: Function[]) {
+            const results: number[] = [];
+            const errors: object[] = [];
+            cbs.forEach((func, index) => {
+                if (typeof func !== 'function') {
+                    throw new Error('Invalid params, must be a cb');
+                }
+                let arg = results[ results.length - 1 ];
 
-        //         try {
-        //             let result = index === 0 ? func() : func(arg);
-        //             if (typeof result === 'undefined') {
-        //                 throw new Error(
-        //                     `callback at index ${index} did not return any value.`,
-        //                 );
-        //             }
-        //             results.push(result);
-        //         } catch (error: Error & { name: string, message: string }) {
-        //             errors.push({
-        //                 index:   index,
-        //                 name:    error.name,
-        //                 message: error.message,
-        //             });
-        //         }
-        //     });
+                try {
+                    let result = index === 0 ? func() : func(arg);
+                    if (typeof result === 'undefined') {
+                        throw new Error(
+                            `callback at index ${index} did not return any value.`,
+                        );
+                    }
+                    results.push(result);
+                } catch (error) {
+                    if (error instanceof Error) {
+                        errors.push({
+                            index:   index,
+                            name:    error.name,
+                            message: error.message,
+                        });
+                    }
+                }
+            });
 
-        //     return {
-        //         value:  results[ results.length - 1 ],
-        //         errors: errors,
-        //     };
-        // }
-        // const result = calculateAdvanced(
-        //     () => {},
-        //     () => {
-        //         return 7;
-        //     },
-        //     () => {},
-        //     (prevResult: number) => {
-        //         return prevResult + 4;
-        //     },
-        //     () => {
-        //         throw new RangeError('Range is too big.');
-        //     },
-        //     (prevResult: number) => {
-        //         return prevResult + 1;
-        //     },
-        //     () => {
-        //         throw new ReferenceError('ID is not defined.');
-        //     },
-        //     (prevResult: number) => {
-        //         return prevResult * 5;
-        //     },
-        // );
+            return {
+                value:  results[ results.length - 1 ],
+                errors: errors,
+            };
+        }
+        const result = calculateAdvanced(
+            () => {},
+            () => {
+                return 7;
+            },
+            () => {},
+            (prevResult: number) => {
+                return prevResult + 4;
+            },
+            () => {
+                throw new RangeError('Range is too big.');
+            },
+            (prevResult: number) => {
+                return prevResult + 1;
+            },
+            () => {
+                throw new ReferenceError('ID is not defined.');
+            },
+            (prevResult: number) => {
+                return prevResult * 5;
+            },
+        );
 
-        // console.log(result);
+        console.log(result);
     }, []);
 
     return (
