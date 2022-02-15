@@ -13,48 +13,40 @@ type PropTypes = {
     /* type props here */
 }
 
-// class Countries {
-//     #url: string;
-//     constructor(url: string) {
-//         this.#url = url;
-//         if (typeof this.#url !== 'string') {
-//             throw new Error('url is not a string');
-//         }
-//     }
 
-//     send(a: number) {
-//         if (typeof a !== 'number') {
-//             throw new Error('param is not a number');
-//         }
+class Countries {
+    #url: string;
+    constructor(url: string) {
+        this.#url = url;
+    }
 
-//         return new Promise((resolve, reject) => {
-//             get(this.#url, (error: Error, meta, body) => {
-//                 let data =  body.toString();
-//                 if (meta.status !== 200) {
-//                     reject(`We have error, status code: ${meta.status}`);
-//                 }
-//                 resolve(data);
-//             });
-//         });
-//     }
-// }
+    send(a: number) {
+        return new Promise(async (resolve, reject) => {
+            const res = await fetch(`${this.#url}?_page=0&_limit=${a}`);
+            if (res.status === 200) {
+                resolve(res.json());
+            }
+            reject(`We have error, status code: ${res.status}`);
+        });
+    }
+}
 
 export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
-        // console.log('Task 4');
+        console.log('Task 4');
 
-        // const url = 'https://jsonplaceholder.typicode.com/user';
-        // const countries = new Countries(url);
+        const url = 'https://jsonplaceholder.typicode.com/posts';
+        const countries = new Countries(url);
 
 
-        // (async() => {
-        //     try {
-        //         const data = await countries.send(2);
-        //         console.log(data); // массив стран
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // })();
+        (async() => {
+            try {
+                const data = await countries.send(7);
+                console.log(data); // массив стран
+            } catch (error) {
+                console.log(error);
+            }
+        })();
     }, []);
 
     return (

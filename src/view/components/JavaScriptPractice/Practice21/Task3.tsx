@@ -15,36 +15,27 @@ type PropTypes = {
 
 export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
-        // console.log('Task 3');
+        console.log('Task 3');
 
-        // const get = require('fetch').fetchUrl;
-        // const url = 'https://jsonplaceholder.typicode.com/users';
+        const url = 'https://jsonplaceholder.typicode.com/users';
 
-        // get(url, (error, meta, body) => {
-        // 	const { data } = JSON.parse(body);
-        // 	console.log(data);
-        // });
+        const send = (url: string) => {
+            return new Promise(async (resolve, reject) => {
+                const res = await fetch(url);
+                if (res.status === 200) {
+                    resolve(res.json());
+                }
+                reject(`We have error, status code: ${res.status}`);
+            });
+        };
 
-        // const send = () => {
-        //     return new Promise((resolve, reject) => {
-        //         get(url, (error, meta, body) => {
-        //             let data;
-        //             data =  body.toString();
-        //             if (meta.status !== 200) {
-        //                 reject(`We have error, status code: ${meta.status}`);
-        //             }
-        //             resolve(data);
-        //         });
-        //     });
-        // };
-
-        // send(url)
-        //     .then((data) => {
-        //         console.log(data);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+        send(url)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     return (
