@@ -12,6 +12,7 @@ import * as S from './styles';
 type PropTypes = {
     /* type props here */
 }
+
 type TypePerson = {
     name:   string,
     age:     number,
