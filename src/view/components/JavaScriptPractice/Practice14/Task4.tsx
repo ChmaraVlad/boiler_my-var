@@ -17,7 +17,6 @@ export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 4');
 
-
         // function Developer() {
         //     this.completedTasks = [];
         // }

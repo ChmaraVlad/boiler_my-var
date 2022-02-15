@@ -15,15 +15,15 @@ type PropTypes = {
 
 export const Task3: FC<PropTypes> = () => {
     useEffect(()=>{
-        console.log('Task 3');
+        // console.log('Task 3');
 
         // const get = require('fetch').fetchUrl;
         // const url = 'https://jsonplaceholder.typicode.com/users';
 
-        // // get(url, (error, meta, body) => {
-        // // 	const { data } = JSON.parse(body);
-        // // 	console.log(data);
-        // // });
+        // get(url, (error, meta, body) => {
+        // 	const { data } = JSON.parse(body);
+        // 	console.log(data);
+        // });
 
         // const send = () => {
         //     return new Promise((resolve, reject) => {

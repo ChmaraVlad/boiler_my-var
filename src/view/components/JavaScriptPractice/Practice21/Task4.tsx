@@ -13,36 +13,35 @@ type PropTypes = {
     /* type props here */
 }
 
+// class Countries {
+//     #url: string;
+//     constructor(url: string) {
+//         this.#url = url;
+//         if (typeof this.#url !== 'string') {
+//             throw new Error('url is not a string');
+//         }
+//     }
+
+//     send(a: number) {
+//         if (typeof a !== 'number') {
+//             throw new Error('param is not a number');
+//         }
+
+//         return new Promise((resolve, reject) => {
+//             get(this.#url, (error: Error, meta, body) => {
+//                 let data =  body.toString();
+//                 if (meta.status !== 200) {
+//                     reject(`We have error, status code: ${meta.status}`);
+//                 }
+//                 resolve(data);
+//             });
+//         });
+//     }
+// }
+
 export const Task4: FC<PropTypes> = () => {
     useEffect(()=>{
-        console.log('Task 4');
-
-
-        // class Countries {
-        //     #url = null
-        //     constructor(url) {
-        //         this.#url = url;
-        //         if (typeof this.#url !== 'string') {
-        //             throw new Error('url is not a string');
-        //         }
-        //     }
-
-        //     send(a) {
-        //         if (typeof a !== 'number') {
-        //             throw new Error('param is not a number');
-        //         }
-
-        //         return new Promise((resolve, reject) => {
-        //             get(url, (error, meta, body) => {
-        //                 let data =  body.toString();
-        //                 if (meta.status !== 200) {
-        //                     reject(`We have error, status code: ${meta.status}`);
-        //                 }
-        //                 resolve(data);
-        //             });
-        //         });
-        //     }
-        // }
+        // console.log('Task 4');
 
         // const url = 'https://jsonplaceholder.typicode.com/user';
         // const countries = new Countries(url);
