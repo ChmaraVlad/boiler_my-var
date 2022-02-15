@@ -17,62 +17,65 @@ export const Task2: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 2');
 
-        // const getCustomers = (arr1, arr2) => {
-        //     const filteredArr1 = arr1.filter((item) => item.verified);
+        type TypeObjVerified = {id: string; name: string; verified: boolean;}[]
+        type TypeCountry = {id: string; country: string;}[]
 
-        //     return new Promise((resolve, reject) => {
-        //         let result = [];
-        //         for (const item of filteredArr1) {
-        //             let id = item.id;
-        //             let count = 0;
-        //             for (const iterator of arr2) {
-        //                 if (iterator.id === id) {
-        //                     result.push({
-        //                         ...item,
-        //                         ...iterator,
-        //                     });
-        //                     break;
-        //                 } else {
-        //                     count++;
-        //                 }
-        //             }
-        //             if (count >= arr2.length) {
-        //                 reject(`We don't have information about country for this customer: ${item.name}`);
-        //             }
-        //         }
-        //         resolve(result);
-        //     });
-        // };
+        const getCustomers = (arr1: TypeObjVerified, arr2: TypeCountry) => {
+            const filteredArr1 = arr1.filter((item) => item.verified);
 
-        // // ```javascript
-        // const customers = [
-        //     {
-        //         id:       'A1',
-        //         name:     'Oliver',
-        //         verified: true,
-        //     },
-        //     {
-        //         id:       'A2',
-        //         name:     'alex',
-        //         verified: true,
-        //     },
-        // ];
+            return new Promise((resolve, reject) => {
+                let result = [];
+                for (const item of filteredArr1) {
+                    let id = item.id;
+                    let count = 0;
+                    for (const iterator of arr2) {
+                        if (iterator.id === id) {
+                            result.push({
+                                ...item,
+                                ...iterator,
+                            });
+                            break;
+                        } else {
+                            count++;
+                        }
+                    }
+                    if (count >= arr2.length) {
+                        reject(`We don't have information about country for this customer: ${item.name}`);
+                    }
+                }
+                resolve(result);
+            });
+        };
+
+        // ```javascript
+        const customers = [
+            {
+                id:       'A1',
+                name:     'Oliver',
+                verified: true,
+            },
+            {
+                id:       'A2',
+                name:     'alex',
+                verified: true,
+            },
+        ];
 
 
-        // const countries = [
-        //     {
-        //         id:      'A1',
-        //         country: 'usa',
-        //     },
-        //     {
-        //         id:      'A2',
-        //         country: 'poland',
-        //     },
-        // ];
+        const countries = [
+            {
+                id:      'A1',
+                country: 'usa',
+            },
+            {
+                id:      'A2',
+                country: 'poland',
+            },
+        ];
 
-        // getCustomers(customers, countries)
-        //     .then((customers) => console.log(customers))
-        //     .catch((error) => console.log(error));
+        getCustomers(customers, countries)
+            .then((customers) => console.log(customers))
+            .catch((error) => console.log(error));
     }, []);
 
     return (
