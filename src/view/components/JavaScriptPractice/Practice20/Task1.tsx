@@ -12,113 +12,118 @@ import * as S from './styles';
 type PropTypes = {
     /* type props here */
 }
+type TypeObject = {
+    name: string;
+    verified?: boolean;
+}
+
+class Customers {
+    #arrayCustomers: TypeObject[];
+    constructor() {
+        this.#arrayCustomers = [];
+    }
+
+    [ Symbol.iterator ]() {
+        let i = 0;
+
+        return {
+            next: () => {
+                let filtered = this.#arrayCustomers.filter((item) => item.verified);
+                const done = i >= filtered.length;
+                const value = !done
+                    ? filtered[ i++ ]
+                    : undefined;
+
+                return {
+                    done,
+                    value,
+                };
+            },
+        };
+    }
+
+    add(obj: TypeObject) {
+        if (typeof obj === 'object' && Array.isArray(obj)) {
+            throw new Error('param must to be obj');
+        }
+        if (!obj.name) {
+            throw new Error('obj must to have property - name');
+        }
+        this.#arrayCustomers.push(obj);
+    }
+}
+
 
 export const Task1: FC<PropTypes> = () => {
     useEffect(()=>{
         console.log('Task 1');
 
-        // class Customers {
-        //     #arrayCustomers: Object[];
-        //     constructor() {
-        //         this.#arrayCustomers = [];
-        //     }
+        // ```javascript
+        const customers = new Customers();
+        customers.add({ name: 'Alex' });
+        customers.add({ name: 'Victor' });
+        customers.add({ name: 'Marcus' });
+        customers.add({ name: 'Andrii', verified: true });
+        customers.add({ name: 'Marco', verified: true });
+        customers.add({ name: 'Oliver' });
+        customers.add({ name: 'Lisa', verified: true });
+        customers.add({ name: 'John' });
+        customers.add({ name: 'Ivan', verified: true });
 
-        //     [ Symbol.iterator ]() {
-        //         let i = 0;
+        // console.log(customers);
 
-        //         return {
-        //             next: () => {
-        //                 let filtered = this.#arrayCustomers.filter((item) => item.verified);
-        //                 const done = i >= filtered.length;
-        //                 const value = !done
-        //                     ? filtered[ i++ ]
-        //                     : undefined;
+        for (const customer of customers) {
+            console.log(customer);
+        }
+        // В консоли будет
+        // { name: 'Andrii', verified: true }
+        // { name: 'Marco', verified: true }
+        // { name: 'Lisa', verified: true }
+        // { name: 'Ivan', verified: true }
+        // ```
 
-        //                 return {
-        //                     done,
-        //                     value,
-        //                 };
-        //             },
-        //         };
-        //     }
-
-        //     add(obj) {
-        //         if (typeof obj === 'object' && Array.isArray(obj)) {
-        //             throw new Error('param must to be obj');
-        //         }
-        //         if (!obj.name) {
-        //             throw new Error('obj must to have property - name');
-        //         }
-        //         this.#arrayCustomers.push(obj);
-        //     }
-        // }
-
-        // // ```javascript
-        // const customers = new Customers();
-        // customers.add({ name: 'Alex' });
-        // customers.add({ name: 'Victor' });
-        // customers.add({ name: 'Marcus' });
-        // customers.add({ name: 'Andrii', verified: true });
-        // customers.add({ name: 'Marco', verified: true });
-        // customers.add({ name: 'Oliver' });
-        // customers.add({ name: 'Lisa', verified: true });
-        // customers.add({ name: 'John' });
-        // customers.add({ name: 'Ivan', verified: true });
-
-        // // console.log(customers);
-
-        // for (const customer of customers) {
-        //     console.log(customer);
-        // }
-        // // В консоли будет
-        // // { name: 'Andrii', verified: true }
-        // // { name: 'Marco', verified: true }
-        // // { name: 'Lisa', verified: true }
-        // // { name: 'Ivan', verified: true }
-        // // ```
-
-        // // const iterator = customers[Symbol.iterator]();
-
-        // // console.log(iterator.next());
-        // // console.log(iterator.next());
-        // // console.log(iterator.next());
-
-        // // ==============================================
-
-        // const iterable = {
-        //     items: [ 1, 2, 3 ],
-        //     /**
-        //      * Метод @@iterator (Symbol.iterator) c 0 аргументов.
-        //      * Возвращаемый методом объект соответствует протоколу «Итератор» (Iterator protocol).
-        //      */
-        //     [ Symbol.iterator ]() {
-        //         let i = 0;
-
-        //         // логика....
-
-        //         return {
-        //             next: () => {
-        //                 const done = i >= this.items.length;
-        //                 const value = !done ? this.items[ i++ ] : undefined;
-
-        //                 return {
-        //                     done,
-        //                     value,
-        //                 };
-        //             },
-        //         };
-        //     },
-        // };
-
-        // for (const item of iterable) {
-        //     console.log(item);
-        // }
-
-        // const iterator = iterable[ Symbol.iterator ]();
+        // const iterator = customers[Symbol.iterator]();
 
         // console.log(iterator.next());
         // console.log(iterator.next());
         // console.log(iterator.next());
+
+        // ==============================================
+
+        const iterable = {
+            items: [ 1, 2, 3 ],
+            /**
+             * Метод @@iterator (Symbol.iterator) c 0 аргументов.
+             * Возвращаемый методом объект соответствует протоколу «Итератор» (Iterator protocol).
+             */
+            [ Symbol.iterator ]() {
+                let i = 0;
+
+                // логика....
+
+                return {
+                    next: () => {
+                        const done = i >= this.items.length;
+                        const value = !done ? this.items[ i++ ] : undefined;
+
+                        return {
+                            done,
+                            value,
+                        };
+                    },
+                };
+            },
+        };
+
+        for (const item of iterable) {
+            console.log(item);
+        }
+
+        const iterator = iterable[ Symbol.iterator ]();
+
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
     }, []);
 
     return (

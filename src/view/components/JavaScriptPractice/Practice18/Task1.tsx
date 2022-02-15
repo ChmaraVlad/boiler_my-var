@@ -17,14 +17,15 @@ type TypePerson = {
     age:     number,
     country: string,
     salary:  number,
+    id?: number;
 };
 type TypeUpdateMethod = [id: number, obj: TypePerson]
 
 class DB {
-    #data: Map<K, V>;
+    #data: Map<number, TypePerson>;
     #id: number;
     constructor() {
-        this.#data = new Map();
+        this.#data = new Map<number, TypePerson>();
         this.#id = 0;
     }
 
