@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Main, Register, Items, Item } from '../pages';
 import LessonsMap from '../pages/LessonsMap';
 import LessonReact from '../pages/LessonReact';
-import News from '../pages/News';
+import News from '../pages/LessonReact/News';
 import NoMatch from '../pages/NoMatch';
 
 //LessonsJavaScript
@@ -36,6 +36,8 @@ import Lesson22 from '../pages/LessonsJavaScript/Lesson22';
 
 // Components
 import { Accordion } from '../components/Accordion';
+import { ReactLesson3 } from '../components/ReactPractice/ReactLesson3';
+import { ReactLesson4 } from '../components/ReactPractice/ReactLesson4';
 
 
 export const Public: FC = () => {
@@ -165,29 +167,29 @@ export const Public: FC = () => {
                                 path = '2'
                             />
                             <Route
-                                element = { <Lesson3 /> }
+                                element = { <ReactLesson3 /> }
                                 path = '3'
                             />
-                            {/* <Route
-                                element = { <Lesson4 /> }
+                            <Route
+                                element = { <ReactLesson4 /> }
                                 path = '4'
                             />
                             <Route
-                                element = { <Lesson5 /> }
+                                element = { <ReactLesson3 /> }
                                 path = '5'
                             />
                             <Route
-                                element = { <Lesson6 /> }
+                                element = { <ReactLesson3 /> }
                                 path = '6'
                             />
                             <Route
-                                element = { <Lesson7 /> }
+                                element = { <ReactLesson3 /> }
                                 path = '7'
                             />
                             <Route
-                                element = { <Lesson8 /> }
+                                element = { <ReactLesson3 /> }
                                 path = '8'
-                            /> */}
+                            />
                         </Route>
                     </Route>
                 </Route>
