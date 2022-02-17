@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // Core
 import React, { FC } from 'react';
 
@@ -15,6 +16,7 @@ type PropTypes = {
 export const ReactLesson4: FC<PropTypes> = () => {
     return (
         <S.Container>
+            <h1>Эти задания я не выполнял, так как мы работаем в boilerPlate с routes и с другой версией React-router-dom</h1>
             <div>
                 <h1>Домашнее задание No1</h1>
                 <p>
