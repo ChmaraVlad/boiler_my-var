@@ -14,7 +14,7 @@ export const StylesAccordionItem = styled.div<{showItem: boolean}>`
         &.selected {
             .accordion-question {
                 cursor: initial;
-                color: #4886FF;
+                color: #2b5cbe;
 
                 &::after {
                     content: '-';
@@ -25,9 +25,9 @@ export const StylesAccordionItem = styled.div<{showItem: boolean}>`
     .accordion-question {
         position: relative;
         padding: 15px 30px;
-        background: #F1F4FB;
+        background: #a8b4d1;
         font-size: 16px;
-        color: rgba(0,0,0,0.6);
+        color: rgba(0,0,0,0.8);
         line-height: 24px;
         cursor: pointer;
         border-radius: 4px;
