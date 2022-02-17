@@ -38,6 +38,7 @@ import Lesson22 from '../pages/LessonsJavaScript/Lesson22';
 import { Accordion } from '../components/Accordion';
 import { ReactLesson3 } from '../components/ReactPractice/ReactLesson3';
 import { ReactLesson4 } from '../components/ReactPractice/ReactLesson4';
+import StudentRegistration from '../pages/LessonReact/StudentRegistration';
 
 
 export const Public: FC = () => {
@@ -175,7 +176,7 @@ export const Public: FC = () => {
                                 path = '4'
                             />
                             <Route
-                                element = { <ReactLesson3 /> }
+                                element = { <StudentRegistration /> }
                                 path = '5'
                             />
                             <Route
