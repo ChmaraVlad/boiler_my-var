@@ -20,6 +20,7 @@ const Lesson10: FC<PropTypes> = () => {
     return (
         <S.Container>
             <h1>
+                Lesson 10 <br />
                 Improved functions capabilities
             </h1>
             <Practice10/>

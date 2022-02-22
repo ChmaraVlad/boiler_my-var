@@ -19,10 +19,10 @@ type PropTypes = {
 const Lesson1: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>Lesson1</h1>
-            <h2>
+            <h1>
+                Lesson1 <br />
                 Variables, data types, logical operators and arithmetics
-            </h2>
+            </h1>
             <Outlet />
         </S.Container>
     );

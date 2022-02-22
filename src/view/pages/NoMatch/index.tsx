@@ -1,14 +1,9 @@
 // Core
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC } from 'react';
-
-// Bus
-// import {} from '../../../bus/'
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import { ErrorBoundary } from '../../components';
-import { Crumb } from '../Main/styles';
 
 // Styles
 import * as S from './styles';
@@ -18,17 +13,21 @@ type PropTypes = {
     /* type props here */
 }
 
+
 const NoMatch: FC<PropTypes> = () => {
+    const navigate = useNavigate();
+
+    const handleRedirect = <T, >(path: T) => {
+        navigate(path);
+    };
+
     return (
         <S.Container>
-            <Crumb to = '/'>
-                <FontAwesomeIcon
-                    icon = { faHome }
-                    size = '2x'
-                />
-            </Crumb>
             <h1>Page NOT found 404</h1>
             <h2>No Match</h2>
+            <button onClick = { () => handleRedirect<string>('/') }>
+                Home
+            </button>
         </S.Container>
     );
 };

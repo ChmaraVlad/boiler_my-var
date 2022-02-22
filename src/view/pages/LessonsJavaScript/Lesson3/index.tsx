@@ -19,9 +19,12 @@ type PropTypes = {
 const Lesson3: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>Page: Lesson 3</h1>
-            <h2>
+            <h1>
+                Lesson 3 <br />
                 Getting in touch with functions
+            </h1>
+            <h2>
+
             </h2>
             <Practice3 />
         </S.Container>

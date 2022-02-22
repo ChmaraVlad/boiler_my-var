@@ -20,7 +20,8 @@ const Lesson21: FC<PropTypes> = () => {
     return (
         <S.Container>
             <h1>
-                Page: Lesson 21
+                Lesson 21 <br />
+                Asynchronous programming
             </h1>
             <Practice21/>
         </S.Container>

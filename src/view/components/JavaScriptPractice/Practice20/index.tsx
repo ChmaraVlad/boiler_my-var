@@ -17,9 +17,6 @@ type PropTypes = {
 export const Practice20: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>
-                Iterators and generators
-            </h1>
             <S.FlexWrapper>
                 <Task1/>
                 <Task2/>

@@ -19,12 +19,10 @@ const Lesson13: FC<PropTypes> = () => {
     return (
         <S.Container>
             <h1>
-                Page: Lesson 13
-            </h1>
-            <h2>Destructuring</h2>
-            <div>
+                Lesson 13 <br />
+                Destructuring <br />
                 without practice tasks
-            </div>
+            </h1>
         </S.Container>
     );
 };

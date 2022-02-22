@@ -16,9 +16,6 @@ type PropTypes = {
 export const Practice17: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>
-                Timers and Performance
-            </h1>
             <S.FlexWrapper>
                 <Task1/>
             </S.FlexWrapper>

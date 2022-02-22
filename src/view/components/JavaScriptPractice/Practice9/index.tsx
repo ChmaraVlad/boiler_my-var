@@ -16,9 +16,6 @@ type PropTypes = {
 export const Practice9: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>
-                Get in touch with arrays
-            </h1>
             <S.FlexWrapper>
                 <Task1/>
             </S.FlexWrapper>

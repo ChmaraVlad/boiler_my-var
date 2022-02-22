@@ -20,9 +20,6 @@ type PropTypes = {
 export const Practice6: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>
-                Get in touch with arrays
-            </h1>
             <S.FlexWrapper>
                 <Task1/>
                 <Task2/>

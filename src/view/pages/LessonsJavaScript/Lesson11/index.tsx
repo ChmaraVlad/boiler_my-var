@@ -20,7 +20,8 @@ const Lesson11: FC<PropTypes> = () => {
     return (
         <S.Container>
             <h1>
-                Page: Lesson 11
+                Lesson 11 <br />
+                Closure
             </h1>
             <Practice11 />
         </S.Container>

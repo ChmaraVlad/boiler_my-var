@@ -19,11 +19,10 @@ const Lesson8: FC<PropTypes> = () => {
     return (
         <S.Container>
             <h1>
-                Error Handling and debugging
-            </h1>
-            <h2>
+                Lesson 8 <br />
+                Error Handling and debugging <br />
                 Without practice Tasks
-            </h2>
+            </h1>
         </S.Container>
     );
 };

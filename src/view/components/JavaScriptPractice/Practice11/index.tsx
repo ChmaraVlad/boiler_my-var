@@ -19,9 +19,6 @@ type PropTypes = {
 export const Practice11: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>
-                Closure
-            </h1>
             <S.FlexWrapper>
                 <Task1/>
                 <Task2/>

@@ -12,30 +12,20 @@ import { Container, Nav } from './styles';
 
 
 const Main: FC = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const linkToLessons = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault;
-        navigate('lessons');
-    };
-    const linkToBackPage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault;
-        navigate(-1);
-    };
-    const linkToHome = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault;
-        navigate('/');
+    const handleRedirect = <T, >(path: T) => {
+        navigate(path);
     };
 
-    // React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
     return (
         <Container>
             <Nav>
-                <button onClick = { linkToBackPage }>Back
+                <button onClick = { () => handleRedirect<number>(-1) }>Back
                 </button>
-                <button onClick = { linkToHome }>Home
+                <button onClick = { () => handleRedirect<string>('/') }>Home
                 </button>
-                <button onClick = { linkToLessons }>Menu
+                <button onClick = { () => handleRedirect<string>('lessons') }>Menu
                 </button>
             </Nav>
             <Outlet />

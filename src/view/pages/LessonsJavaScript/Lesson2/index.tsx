@@ -20,10 +20,10 @@ type PropTypes = {
 const Lesson2: FC<PropTypes> = () => {
     return (
         <S.Container>
-            <h1>Lesson2</h1>
-            <h2>
+            <h1>
+                Lesson2 <br />
                 Control flow
-            </h2>
+            </h1>
             <Practice2 />
             <Outlet />
         </S.Container>

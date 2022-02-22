@@ -1,25 +1,23 @@
 // Core
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.section`
-    position: relative;
     width: 100%;
+    /* padding-top: 20px; */
 `;
 
 export const Nav = styled.nav`
     display: flex;
-    justify-content: center;
-    gap: 12px;
-`;
-
-export const Breadcrumbs = styled.div`
-    display: flex;
-    gap: 12px;
-    align-items: center;
-`;
-
-export const Crumb = styled(Link)`
-    margin-bottom: 20px;
-    display: inline-block;
+    justify-content: space-evenly;
+    max-width: 250px;
+    margin: 0 auto;
+    /* padding: 10px; */
+    button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: #aeaeae;
+        }
+    }
 `;
