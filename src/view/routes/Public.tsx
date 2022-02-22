@@ -3,14 +3,10 @@ import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Pages
-import { Main, Register, Items, Item } from '../pages';
-import LessonsMap from '../pages/LessonsMap';
-import LessonReact from '../pages/LessonReact';
-import News from '../pages/LessonReact/News';
-import NoMatch from '../pages/NoMatch';
-
-//LessonsJavaScript
 import LessonsJavaScript from '../pages/LessonsJavaScript';
+import { Main } from '../pages';
+import NoMatch from '../pages/NoMatch';
+// lessonJavascript
 import Lesson1 from '../pages/LessonsJavaScript/Lesson1';
 import Lesson2 from '../pages/LessonsJavaScript/Lesson2';
 import Lesson3 from '../pages/LessonsJavaScript/Lesson3';
@@ -34,12 +30,6 @@ import Lesson20 from '../pages/LessonsJavaScript/Lesson20';
 import Lesson21 from '../pages/LessonsJavaScript/Lesson21';
 import Lesson22 from '../pages/LessonsJavaScript/Lesson22';
 
-// Components
-import { Accordion } from '../components/Accordion';
-import { ReactLesson3 } from '../components/ReactPractice/ReactLesson3';
-import { ReactLesson4 } from '../components/ReactPractice/ReactLesson4';
-import StudentRegistration from '../pages/LessonReact/StudentRegistration';
-
 
 export const Public: FC = () => {
     return (
@@ -49,149 +39,97 @@ export const Public: FC = () => {
                     element = { <Main /> }
                     path = '/'>
                     <Route
-                        element = { <Register /> }
-                        path = 'register'
-                    />
-                    <Route
-                        element = { <Items /> }
-                        path = 'items'>
-                        <Route
-                            element = { <Item /> }
-                            path = ':id'
-                        />
-                    </Route>
-                    <Route
-                        element = { <LessonsMap /> }
+                        element = { <LessonsJavaScript /> }
                         path = 'lessons'>
                         <Route
-                            element = { <LessonsJavaScript /> }
-                            path = 'js'>
-                            <Route
-                                element = { <Lesson1 /> }
-                                path = '1'
-                            />
-                            <Route
-                                element = { <Lesson2 /> }
-                                path = '2'
-                            />
-                            <Route
-                                element = { <Lesson3 /> }
-                                path = '3'
-                            />
-                            <Route
-                                element = { <Lesson4 /> }
-                                path = '4'
-                            />
-                            <Route
-                                element = { <Lesson5 /> }
-                                path = '5'
-                            />
-                            <Route
-                                element = { <Lesson6 /> }
-                                path = '6'
-                            />
-                            <Route
-                                element = { <Lesson7 /> }
-                                path = '7'
-                            />
-                            <Route
-                                element = { <Lesson8 /> }
-                                path = '8'
-                            />
-                            <Route
-                                element = { <Lesson9 /> }
-                                path = '9'
-                            />
-                            <Route
-                                element = { <Lesson10 /> }
-                                path = '10'
-                            />
-                            <Route
-                                element = { <Lesson11 /> }
-                                path = '11'
-                            />
-                            <Route
-                                element = { <Lesson12 /> }
-                                path = '12'
-                            />
-                            <Route
-                                element = { <Lesson13 /> }
-                                path = '13'
-                            />
-                            <Route
-                                element = { <Lesson14 /> }
-                                path = '14'
-                            />
-                            <Route
-                                element = { <Lesson15 /> }
-                                path = '15'
-                            />
-                            <Route
-                                element = { <Lesson16 /> }
-                                path = '16'
-                            />
-                            <Route
-                                element = { <Lesson17 /> }
-                                path = '17'
-                            />
-                            <Route
-                                element = { <Lesson18 /> }
-                                path = '18'
-                            />
-                            <Route
-                                element = { <Lesson19 /> }
-                                path = '19'
-                            />
-                            <Route
-                                element = { <Lesson20 /> }
-                                path = '20'
-                            />
-                            <Route
-                                element = { <Lesson21 /> }
-                                path = '21'
-                            />
-                            <Route
-                                element = { <Lesson22 /> }
-                                path = '22'
-                            />
-
-                        </Route>
+                            element = { <Lesson1 /> }
+                            path = '1'
+                        />
                         <Route
-                            element = { <LessonReact /> }
-                            path = 'react'>
-                            <Route
-                                element = { <News /> }
-                                path = '1'
-                            />
-                            <Route
-                                element = { <Accordion /> }
-                                path = '2'
-                            />
-                            <Route
-                                element = { <ReactLesson3 /> }
-                                path = '3'
-                            />
-                            <Route
-                                element = { <ReactLesson4 /> }
-                                path = '4'
-                            />
-                            <Route
-                                element = { <StudentRegistration /> }
-                                path = '5'
-                            />
-                            <Route
-                                element = { <ReactLesson3 /> }
-                                path = '6'
-                            />
-                            <Route
-                                element = { <ReactLesson3 /> }
-                                path = '7'
-                            />
-                            <Route
-                                element = { <ReactLesson3 /> }
-                                path = '8'
-                            />
-                        </Route>
+                            element = { <Lesson2 /> }
+                            path = '2'
+                        />
+                        <Route
+                            element = { <Lesson3 /> }
+                            path = '3'
+                        />
+                        <Route
+                            element = { <Lesson4 /> }
+                            path = '4'
+                        />
+                        <Route
+                            element = { <Lesson5 /> }
+                            path = '5'
+                        />
+                        <Route
+                            element = { <Lesson6 /> }
+                            path = '6'
+                        />
+                        <Route
+                            element = { <Lesson7 /> }
+                            path = '7'
+                        />
+                        <Route
+                            element = { <Lesson8 /> }
+                            path = '8'
+                        />
+                        <Route
+                            element = { <Lesson9 /> }
+                            path = '9'
+                        />
+                        <Route
+                            element = { <Lesson10 /> }
+                            path = '10'
+                        />
+                        <Route
+                            element = { <Lesson11 /> }
+                            path = '11'
+                        />
+                        <Route
+                            element = { <Lesson12 /> }
+                            path = '12'
+                        />
+                        <Route
+                            element = { <Lesson13 /> }
+                            path = '13'
+                        />
+                        <Route
+                            element = { <Lesson14 /> }
+                            path = '14'
+                        />
+                        <Route
+                            element = { <Lesson15 /> }
+                            path = '15'
+                        />
+                        <Route
+                            element = { <Lesson16 /> }
+                            path = '16'
+                        />
+                        <Route
+                            element = { <Lesson17 /> }
+                            path = '17'
+                        />
+                        <Route
+                            element = { <Lesson18 /> }
+                            path = '18'
+                        />
+                        <Route
+                            element = { <Lesson19 /> }
+                            path = '19'
+                        />
+                        <Route
+                            element = { <Lesson20 /> }
+                            path = '20'
+                        />
+                        <Route
+                            element = { <Lesson21 /> }
+                            path = '21'
+                        />
+                        <Route
+                            element = { <Lesson22 /> }
+                            path = '22'
+                        />
+
                     </Route>
                 </Route>
                 <Route
@@ -202,3 +140,4 @@ export const Public: FC = () => {
         </section>
     );
 };
+ 

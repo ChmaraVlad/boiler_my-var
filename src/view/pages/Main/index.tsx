@@ -1,33 +1,43 @@
 // Core
 import React, { FC } from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 // Components
 import { ErrorBoundary } from '../../components';
 
 // Styles
-import { Container, Nav, Breadcrumbs, Crumb } from './styles';
+import { Container, Nav } from './styles';
 
 // Icons
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+
 
 const Main: FC = () => {
+    let navigate = useNavigate();
+
+    const linkToLessons = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault;
+        navigate('lessons');
+    };
+    const linkToBackPage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault;
+        navigate(-1);
+    };
+    const linkToHome = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault;
+        navigate('/');
+    };
+
+    // React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
     return (
         <Container>
             <Nav>
-                <Link to = 'register'>Registation</Link>
-                <Link to = 'items'>Items</Link>
-                <Link to = 'lessons'>Lessons</Link>
+                <button onClick = { linkToBackPage }>Back
+                </button>
+                <button onClick = { linkToHome }>Home
+                </button>
+                <button onClick = { linkToLessons }>Menu
+                </button>
             </Nav>
-            <Breadcrumbs>
-                <Crumb to = '/'>
-                    <FontAwesomeIcon
-                        icon = { faHome }
-                        size = '2x'
-                    />
-                </Crumb>
-            </Breadcrumbs>
             <Outlet />
         </Container>
     );
