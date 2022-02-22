@@ -1,15 +1,13 @@
 // Core
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC } from 'react';
 import { Outlet } from 'react-router';
-import { Link } from 'react-router-dom';
 
 // Bus
 // import {} from '../../../bus/'
 
 // Components
 import { ErrorBoundary } from '../../components';
+import { Navigation } from '../../components/Navigation';
 
 // Styles
 import * as S from './styles';
@@ -113,6 +111,7 @@ const lessons = [
 const LessonsJavaScript: FC<PropTypes> = () => {
     return (
         <S.Container>
+            <Navigation />
             <h1>Lessons</h1>
             <S.NavigationWrapper>
                 {
