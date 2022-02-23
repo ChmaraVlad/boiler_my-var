@@ -130,7 +130,6 @@ export const Public: FC = () => {
                         element = { <Lesson22 /> }
                         path = '22'
                     />
-
                 </Route>
                 <Route
                     element = { <NoMatch /> }
